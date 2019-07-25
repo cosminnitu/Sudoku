@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+    <link rel = "stylesheet" type = "text/css" href = "//maxcdn.bootstrapcdn.com//bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel = "stylesheet" type = "text/css" href="css/Styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type = "text/javascript" src = "scripts/Scipts.js"></script>
+</head>
+
+<body>
+<div>
+    <p>
+        <button type = "button" onclick = startGame()>Start Game</button>
+    </p>
+    <p>
+        <button type = "button" onclick = checkWin()>Check Solution</button>
+    </p>
+</div>
+
+<div class="main-grid">
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_00" >
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_01">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_02">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_10">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_11">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_12">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_20">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_21">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_22">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_03">
+                <div class="inner-square" ></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_04">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_05">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_13">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_14">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_15">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_23">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_24">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_25">
+                <div class="inner-square"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_06">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_07">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_08">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_16">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_17">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_18">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_26">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_27">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_28">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_30">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_31">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_32">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_40">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_41">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_42">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_50">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_51">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_52">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_33">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_34">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_35">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_43">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_44">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_45">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_53">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_54">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_55">
+                <div class="inner-square"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_36">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_37">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_38">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_46">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_47">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_48">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_56">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_57">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_58">
+                <div class="inner-square"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_60">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_61">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_62">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_70">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_71">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_72">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_80">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_81">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty"id="cell_82">
+                <div class="inner-square"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_63">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_64">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_65">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_73">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_74">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_75">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_83">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_84">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty"id="cell_85">
+                <div class="inner-square"></div>
+            </div>
+        </div>
+    </div>
+    <div class="outer-grid">
+        <div class="outer-square">
+            <div class="inner-grid-empty" id="cell_66">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_67">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_68">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_76">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_77">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_78">
+                <div class="inner-square"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_86">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_87">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+            <div class="inner-grid-empty" id="cell_88">
+                <div class="inner-square" tabindex="0"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
